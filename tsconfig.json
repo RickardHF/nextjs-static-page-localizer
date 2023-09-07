@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "ESNext",
+        "allowJs": true,
+        "outDir": "./dist",
+        "moduleResolution": "node",
+        "incremental": true,
+        "resolveJsonModule": true,
+        "rootDir": "./src",
+        "declaration": true,
+        "esModuleInterop": true,
+        "jsx": "preserve",
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+        "paths": {
+          "@/*": ["./*"]
+        }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}

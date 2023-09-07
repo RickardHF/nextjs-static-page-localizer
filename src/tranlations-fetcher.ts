@@ -1,4 +1,4 @@
-import useDetermineLanguage from "../helpers/language-determinor";
+import useDetermineLanguage from "./helpers/language-determinor";
 const { getSection } = require("./lang-support");
 
 

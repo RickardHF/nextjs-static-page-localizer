@@ -1,4 +1,4 @@
-import useDetermineLanguage from "../helpers/language-determinor";
+import useDetermineLanguage from "./helpers/language-determinor";
 const { setLocalizedMetadata } = require("./lang-support");
 
 export default function useMetadataSetter(title_key:string, description_key:string, metadata_section_key:string = "metadata") {
