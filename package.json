@@ -12,7 +12,7 @@
     "test": "test",
     "compile": "npx tsc"
   },
-  "type": "module",
+  "type": "commonjs",
   "keywords": [
     "nextjs",
     "azure",
@@ -32,5 +32,8 @@
   },
   "devDependencies": {
     "typescript": "^5.2.2"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
