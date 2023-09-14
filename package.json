@@ -81,9 +81,6 @@
       "types": "./dist/interfaces/index.d.ts"
     },
     "./interfaces/*": "./dist/interfaces/*",
-    "./lang-support": {
-      "import": "./dist/lang-support.js",
-      "types": "./dist/lang-support.d.ts"
-    }
+    "./lang-support": "./dist/lang-support.js"
   }
 }
