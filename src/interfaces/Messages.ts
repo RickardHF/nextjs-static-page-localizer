@@ -1,4 +1,4 @@
 
-export default interface Messages {
+export interface Messages {
     [key: string]: any
 }

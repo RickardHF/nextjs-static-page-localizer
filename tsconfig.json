@@ -1,25 +1,15 @@
 {
     "compilerOptions": {
-        "target": "ES6",
-        "module": "ESNext",
-        "allowJs": true,
-        "outDir": "./dist",
-        "moduleResolution": "node",
-        "incremental": true,
-        "resolveJsonModule": true,
-        "rootDir": "./src",
+        "module": "CommonJS",
+        "target": "ESNext",
         "declaration": true,
-        "esModuleInterop": true,
-        "jsx": "preserve",
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ],
-        "paths": {
-          "@/*": ["./*"]
-        }
+        "outDir": "./dist",
+        "jsx": "react",
+        "moduleResolution": "node",
+        "strict": true,
+        "esModuleInterop": true
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+    "include": [
+        "src/**/*"
+    ]
 }

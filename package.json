@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "For creating localized pages in an application that needs to be compatible or able to run as a static web page",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
@@ -12,7 +13,6 @@
     "test": "test",
     "compile": "npx tsc"
   },
-  "type": "commonjs",
   "keywords": [
     "nextjs",
     "azure",
@@ -34,6 +34,56 @@
     "typescript": "^5.2.2"
   },
   "files": [
-    "dist"
-  ]
+    "/dist",
+    "/dist/lang-support.js",
+    "/dist/lang-support.d.ts",
+    "/dist/ui-components.js",
+    "/dist/ui-components.d.ts",
+    "/dist/components/LanguageSwitcher.js",
+    "/dist/components/LanguageSwitcher.d.ts",
+    "/dist/components/LocalizedLink.js",
+    "/dist/components/LocalizedLink.d.ts",
+    "/dist/components",
+    "/dist/helpers/index.js",
+    "/dist/helpers/index.d.ts",
+    "/dist/helpers",
+    "/dist/interfaces/index.js",
+    "/dist/interfaces/index.d.ts",
+    "/dist/interfaces",
+    "/dist/index.js",
+    "/dist/index.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/ui-components.js",
+      "types": "./dist/ui-components.d.ts"
+    },
+    "./components/LanguageSwitcher": {
+      "import": "./dist/components/LanguageSwitcher.js",
+      "types": "./dist/components/LanguageSwitcher.d.ts"
+    },
+    "./components/LocalizedLink": {
+      "import": "./dist/components/LocalizedLink.js",
+      "types": "./dist/components/LocalizedLink.d.ts"
+    },
+    "./components/*": "./dist/components/*",
+    "./helpers": {
+      "import": "./dist/helpers/index.js",
+      "types": "./dist/helpers/index.d.ts"
+    },
+    "./helpers/*": "./dist/helpers/*",
+    "./interfaces": {
+      "import": "./dist/interfaces/index.js",
+      "types": "./dist/interfaces/index.d.ts"
+    },
+    "./interfaces/*": "./dist/interfaces/*",
+    "./lang-support": {
+      "import": "./dist/lang-support.js",
+      "types": "./dist/lang-support.d.ts"
+    }
+  }
 }

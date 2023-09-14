@@ -1,6 +1,6 @@
-import Config from "../interfaces/Config";
+import { Config } from "../interfaces/Config";
 
-export default function loadConfig() : Config {
+export function loadConfig() : Config {
     const defaultLanguage = "en";
     const raw_config = require("@/messages/config.json");
 

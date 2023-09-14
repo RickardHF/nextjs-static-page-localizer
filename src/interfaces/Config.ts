@@ -1,6 +1,6 @@
-import Language from "./Language";
+import { Language } from "./Language";
 
-export default interface Config {
+export interface Config {
     default: string,
     languages: Language[]
 }

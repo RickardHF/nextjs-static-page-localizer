@@ -1,5 +1,6 @@
 import Link from "next/link";
-import useDetermineLanguage from "../helpers/language-determinor";
+import React from "react";
+import { useDetermineLanguage } from "../helpers/language-determinor";
 
 interface LocalizedLinkProps {
     href: string,

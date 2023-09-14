@@ -1,7 +1,7 @@
-import useDetermineLanguage from "./helpers/language-determinor";
+import { useDetermineLanguage } from "./helpers/language-determinor";
 const { setHtmlLanguage } = require("./lang-support");
 
-export default function useLanguageSetter() {
+export function useLanguageSetter() {
     const language = useDetermineLanguage();
     setHtmlLanguage(language);
 }

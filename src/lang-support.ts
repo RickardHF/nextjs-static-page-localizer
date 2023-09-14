@@ -1,5 +1,5 @@
-import loadConfig from "./helpers/config-loader";
-import loadMessages from "./helpers/message-loader";
+import { loadConfig } from "./helpers/config-loader";
+import { loadMessages } from "./helpers/message-loader";
 
 
 const config = loadConfig();

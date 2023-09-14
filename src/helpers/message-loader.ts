@@ -1,7 +1,7 @@
-import Config from "../interfaces/Config";
-import Messages from "../interfaces/Messages";
+import { Config } from "../interfaces/Config";
+import { Messages } from "../interfaces/Messages";
 
-export default function loadMessages(config: Config): Messages {
+export function loadMessages(config: Config): Messages {
 
     const messages: Messages = {};
     
