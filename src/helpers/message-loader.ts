@@ -7,7 +7,7 @@ export function loadMessages(config: Config): Messages {
     const messages: Messages = {};
     
     for (const lang of config.languages) {
-        const message_path = path.join(process.cwd(), `./messages/${lang.code}.json`);
+        const message_path = path.resolve(process.cwd(), `./messages/${lang.code}.json`);
         messages[lang.code] = require(message_path);
     }
 

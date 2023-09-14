@@ -3,7 +3,7 @@ const path = require("path");
 
 export function loadConfig() : Config {
     const defaultLanguage = "en";
-    const config_path = path.join(process.cwd(), "./messages/config.json");
+    const config_path = path.resolve(process.cwd(), "./messages/config.json");
     const raw_config = require(config_path);
 
     const config: Config = {
