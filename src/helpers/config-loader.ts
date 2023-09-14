@@ -2,7 +2,7 @@ import { Config } from "../interfaces/Config";
 
 export function loadConfig() : Config {
     const defaultLanguage = "en";
-    const raw_config = require("@/messages/config.json");
+    const raw_config = require("../../../messages/config.json");
 
     const config: Config = {
         default: defaultLanguage,
