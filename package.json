@@ -1,6 +1,6 @@
 {
   "name": "nextjs-static-page-localizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "For creating localized pages in an application that needs to be compatible or able to run as a static web page",
   "main": "dist/index.js",
   "module": "dist/index.js",
