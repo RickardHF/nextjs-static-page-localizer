@@ -11,6 +11,9 @@ let messages:Messages = {};
 
 try {
     const raw_config = require(path.join(process.cwd(), "./messages", "config.js"));
+    const raw_config_2 = require(path.join(process.cwd(), "rf-localizer.config.js"));
+    console.log("raw_config_2", raw_config_2);
+    console.log("raw_config", raw_config);
     config = loadConfig(raw_config.configuration);
     messages = raw_config.messages;
 } catch (error) {
