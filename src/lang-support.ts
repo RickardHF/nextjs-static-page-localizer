@@ -1,10 +1,23 @@
+import path from "path";
 import { loadConfig } from "./helpers/config-loader";
-import { loadMessages } from "./helpers/message-loader";
+import { Config, Messages } from "./interfaces";
+
+let config:Config = {
+    default: "",
+    languages: []
+};
+
+let messages:Messages = {};
+
+try {
+    const raw_config = require(path.join(process.cwd(), "messages", "config.js"));
+    config = loadConfig(raw_config.configuration);
+    messages = raw_config.messages;
+} catch (error) {
+    console.error("Error loading config.js", error);
+}
 
 
-const config = loadConfig();
-
-const messages = loadMessages(config);
 
 function checkIfLanguageSupported(lang:string): boolean {
     return config.languages.some((language) => language.code === lang);

@@ -1,11 +1,8 @@
 import { Config } from "../interfaces/Config";
-const path = require("path");
 
-export function loadConfig() : Config {
+export function loadConfig(raw_config: any) : Config {
     const defaultLanguage = "en";
-    const config_path = path.resolve(process.cwd(), "./messages/config");
-    const config_data = require(config_path).default;
-    const raw_config = JSON.parse(config_data);
+    console.log("config_data", raw_config);
 
     const config: Config = {
         default: defaultLanguage,
