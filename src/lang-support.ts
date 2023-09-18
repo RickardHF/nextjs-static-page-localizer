@@ -10,7 +10,7 @@ let config:Config = {
 let messages:Messages = {};
 
 try {
-    const raw_config = require(path.join(process.cwd(), "messages", "config.js"));
+    const raw_config = require(path.join(process.cwd(), "@/messages", "config.js"));
     config = loadConfig(raw_config.configuration);
     messages = raw_config.messages;
 } catch (error) {
