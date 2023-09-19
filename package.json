@@ -1,6 +1,6 @@
 {
   "name": "nextjs-static-page-localizer",
-  "version": "1.0.18",
+  "version": "1.0.17",
   "description": "For creating localized pages in an application that needs to be compatible or able to run as a static web page",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -37,35 +37,8 @@
     "react-dom": "^18.2.0"
   },
   "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./components": {
-      "import": "./dist/ui-components.js",
-      "types": "./dist/ui-components.d.ts"
-    },
-    "./components/LanguageSwitcher": {
-      "import": "./dist/components/LanguageSwitcher.js",
-      "types": "./dist/components/LanguageSwitcher.d.ts"
-    },
-    "./components/LocalizedLink": {
-      "import": "./dist/components/LocalizedLink.js",
-      "types": "./dist/components/LocalizedLink.d.ts"
-    },
-    "./components/*": "./dist/components/*",
-    "./helpers": {
-      "import": "./dist/helpers/index.js",
-      "types": "./dist/helpers/index.d.ts"
-    },
-    "./helpers/*": "./dist/helpers/*",
-    "./interfaces": {
-      "import": "./dist/interfaces/index.js",
-      "types": "./dist/interfaces/index.d.ts"
-    },
-    "./interfaces/*": "./dist/interfaces/*"
-  }
+    "dist",
+    "components.js",
+    "components.d.ts"
+  ]
 }
