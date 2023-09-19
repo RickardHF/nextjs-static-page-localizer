@@ -71,7 +71,7 @@ Given that we want to have support for the languages English and Spanish, a setu
 
 **The folder structure**
 
-```
+```go
 | .
 |--- src
 |   |--- <your source code>

@@ -1,4 +1,4 @@
 
-export * from "./Config";
+export * from "./ConfigurationInterface";
 export * from "./Language";
 export * from "./Messages";

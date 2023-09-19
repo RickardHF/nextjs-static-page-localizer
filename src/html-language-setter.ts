@@ -1,7 +1,26 @@
+'use client';
+
 import { useDetermineLanguage } from "./helpers/language-determinor";
-const { setHtmlLanguage } = require("./lang-support");
+import { useLocalization } from "./components/Contexts";
+import Configuration from "./classes/Configuration";
 
 export function useLanguageSetter() {
     const language = useDetermineLanguage();
-    setHtmlLanguage(language);
+    const { configuration } = useLocalization();
+    
+    const conf = new Configuration(configuration.default, configuration.languages, configuration.messages)
+
+    let lang = conf.default;
+    if (conf.checkIfLanguageSupported(language)) {
+        lang = language;
+    } else {
+        console.warn(`Language ${language} not supported. Using default language.`);
+    }
+
+    if(! document) {
+        console.warn("Document not found. Language not set.");
+        return;
+    }
+
+    document.documentElement.lang = lang;
 }

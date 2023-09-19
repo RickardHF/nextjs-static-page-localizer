@@ -1,12 +1,20 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
-        "target": "ESNext",
+        "module": "ESNext",
+        "target": "ES5",
         "declaration": true,
-        "outDir": "./dist",
+        "allowSyntheticDefaultImports": true,
+        "types": ["node"],
+        "lib": [
+            "ESNext",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "outDir": "dist",
         "jsx": "react",
-        "moduleResolution": "node",
+        "moduleResolution": "Node",
         "strict": true,
+        "sourceMap": true,
         "esModuleInterop": true
     },
     "include": [

@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "test",
-    "compile": "npx tsc"
+    "compile": "rm -rf dist/ && npx tsc"
   },
   "keywords": [
     "nextjs",
@@ -23,35 +23,21 @@
   ],
   "author": "Rickard Hole Falck",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
     "@types/node": "^20.5.9",
     "@types/react-dom": "^18.2.7",
     "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "devDependencies": {
-    "typescript": "^5.2.2"
-  },
   "files": [
-    "/dist",
-    "/dist/lang-support.js",
-    "/dist/lang-support.d.ts",
-    "/dist/ui-components.js",
-    "/dist/ui-components.d.ts",
-    "/dist/components/LanguageSwitcher.js",
-    "/dist/components/LanguageSwitcher.d.ts",
-    "/dist/components/LocalizedLink.js",
-    "/dist/components/LocalizedLink.d.ts",
-    "/dist/components",
-    "/dist/helpers/index.js",
-    "/dist/helpers/index.d.ts",
-    "/dist/helpers",
-    "/dist/interfaces/index.js",
-    "/dist/interfaces/index.d.ts",
-    "/dist/interfaces",
-    "/dist/index.js",
-    "/dist/index.d.ts"
+    "dist"
   ],
   "exports": {
     ".": {
@@ -80,7 +66,6 @@
       "import": "./dist/interfaces/index.js",
       "types": "./dist/interfaces/index.d.ts"
     },
-    "./interfaces/*": "./dist/interfaces/*",
-    "./lang-support": "./dist/lang-support.js"
+    "./interfaces/*": "./dist/interfaces/*"
   }
 }
