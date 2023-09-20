@@ -1,9 +1,7 @@
 
 # NEXT.js Static Page Localizer
 
-# WARNING !!! Currently broken. Working on fix
-
-### Introdduction
+### Introduction
 
 This is a package for creating localized NEXT.js applications that runs as Static Web Pages. While static web pages are cheap, easy to use and great, they lack some functionality to support some of the more poular localization packages.
 
@@ -19,7 +17,9 @@ npm i nextjs-static-page-localizer
 
 ## Add required files
 
-At your root you need to create a folder called `messages` and this should contain a file called `config.json` and a `.json` file for each language you aim to support.
+While technically you don't need to add extra files to your project for this, it is advisable to do so in order to keep your project more easily navigable, maintainable and easier to work with. Following from here, we will use our prefered way of setting this up, which closely resembles the way in which other localization/internationalization packages use.
+
+At your root you need to create a folder called `messages` and this should contain a file called `config.json` and a `.json` file for each language you aim to support. 
 
 ### Configure config.json
 
@@ -128,6 +128,73 @@ Given that we want to have support for the languages English and Spanish, a setu
 }
 ```
 
+### Set up wrapper
+
+In order for using the language files you've just created and make their contents available in all of your sub-modules, you need to initialize a wrapper in your `layout.tsx` file. 
+
+```ts
+import './globals.css'
+// Import the wrapper and the Configuration class
+import { LocalizerWrapper, Configuration } from 'nextjs-static-page-localizer'
+
+// Load the configuration
+const config = require('@/messages/config')
+
+// Set up the default title and description
+export const metadata = {
+  title: 'Default Title',
+  description: 'Default description',
+}
+
+export default async function RootLayout({
+  children,
+  params
+}: {
+  children: React.ReactNode,
+  params: any
+}) {
+
+  // Create the configuration object based on the loaded configuration
+  const configuration = new Configuration(config.default, config.languages, config.messages)
+
+  // Wrap the main section with the wrapper and pass in the configuration
+  return (
+    <html>
+      <body>
+        <LocalizerWrapper configuration={configuration}>
+          <main>
+            {children}
+          </main>
+        </LocalizerWrapper>
+      </body>
+    </html>
+  )
+}
+
+```
+
+For this we created an additional file in the messages folder to keep the code at the layout element cleaner, `config.js`, which loads the data from the files fo us. You could do the same or load the data in a similar manner directly to your layout element.
+
+```ts
+const config = require('./config.json');
+
+const en = require('./en.json');
+const no = require('./no.json');
+const cs = require('./cs.json');
+
+const messages = {
+    "en": en,
+    "no": no,
+    "cs": cs
+}
+
+module.exports = {
+    default: config.default,
+    languages: config.languages,
+    messages: messages
+}
+```
+
 ### Using the content in components
 
 So far we've talked about how to create the structure. Now we will talk about how to use the content in our app.
@@ -161,7 +228,7 @@ function YourComponent(){
 
 export default YourComponent
 ```
-#### Using HTML language setter
+### Using HTML language setter
 
 This package also support setting the `lang` section of the root `HTML` element. We will now add this to the code we made previously. This is quite easy to do, and it will specify the language as of the `?lang=<code>` section of the url. If it does not find this, it will specify the default language as the language of the page.
 
@@ -189,7 +256,7 @@ function YourComponent(){
 
 export default YourComponent
 ```
-#### Specifying page metadata
+### Specifying page metadata
 
 In order to make even the title and description localized we can use the metadata setter to set the content of the header title and description as we have specified in our language files.
 
@@ -219,3 +286,81 @@ function YourComponent(){
 export default YourComponent
 
 ```
+
+
+### Create a Link to other sub-pages
+
+In your project you probably wither have, or will at some point need to have some sub-pages. When you have that you'll need some way to navigate between the pages. Given that we are using a query parameter for determining the prefered language this needs to be part of the link as your're going from one sub-page to another without loosing the setting. 
+
+We have for this purpose created a link element that builds on the NEXT.js Link element, which handles this language setting for you. Under is an example of how that can be set up.
+
+```ts
+'use client'
+// Import the translationsfetcher
+import { useTranslationsFetcher } from "nextjs-static-page-localizer";
+// Import the LocalizedLink component
+import { LocalizedLink } from "nextjs-static-page-localizer/components";
+
+export default function Header() {
+    // Import the translations so that the links can have localized Labels as well
+    const tranlations = useTranslationsFetcher();
+    // Get the section in which you have the link names (not neccesarily the same as this)
+    const link_names = tranlations("links");
+    
+    // Create the link elements 
+    return (
+        <header>
+            <div className="menu">
+                <LocalizedLink href="/">link_names("home")</LocalizedLink>
+                <LocalizedLink href="/about">link_names("about")</LocalizedLink>
+            </div>
+        </header>
+    );
+}
+```
+
+### Create a Language Switcher
+
+Now we'll also have to have a way to set the language so that the user can switch the language the page is in. We have also created a component that switches the languages while not changing the page that one currently is on. We will now expand on the last example to add the language setters. Here we'll do it dynamically based on the languages we have in our config, however you can create each component by it self if you wish to do so.
+
+```ts
+'use client'
+// Import the language interface
+import { Language } from "nextjs-static-page-localizer/interfaces";
+// Import the useLocalization
+import { useTranslationsFetcher, useLocalization } from "nextjs-static-page-localizer";
+// Import the LanguageSwitcher component
+import { LocalizedLink, LanguageSwitcher } from "nextjs-static-page-localizer/components";
+
+export default function Header() {
+    // Fetch the configuration
+    const { configuration } = useLocalization();
+    const tranlations = useTranslationsFetcher();
+    const link_names = tranlations("links");
+    
+    // Create a component for each language dynamically based on the languages 
+    return (
+        <header>
+            <div className="languages">
+                {
+                    configuration.languages.map((language:Language) => {
+                        return (
+                            <LanguageSwitcher
+                                key={language.code}
+                                lang={language.code}
+                                >
+                                <h4>{language.name}</h4>
+                            </LanguageSwitcher>
+                        );
+                    })
+                }
+            </div>
+            <div className="menu">
+                <LocalizedLink href="/"><h2>link_names("home")</h2></LocalizedLink>
+                <LocalizedLink href="/about"><h2>link_names("about")</h2></LocalizedLink>
+            </div>
+        </header>
+    );
+}
+```
+
