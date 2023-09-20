@@ -5,9 +5,10 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "homepage": "https://github.com/RickardHF/nextjs-static-page-localizer#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/RickardHF/nextjs-static-page-localizer"
+    "url": "https://github.com/RickardHF/nextjs-static-page-localizer.git"
   },
   "scripts": {
     "test": "test",
