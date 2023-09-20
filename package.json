@@ -15,6 +15,12 @@
   },
   "keywords": [
     "nextjs",
+    "react",
+    "next",
+    "i18n",
+    "localizer",
+    "internationalization",
+    "internationalisation",
     "azure",
     "localization",
     "static",
@@ -39,6 +45,8 @@
   "files": [
     "dist",
     "components.js",
-    "components.d.ts"
+    "components.d.ts",
+    "interfaces.js",
+    "interfaces.d.ts"
   ]
 }
