@@ -21,6 +21,10 @@ We have created this package to help users easily introduce localization on thei
 
 ## How to Use
 
+### Get Started Easily
+
+If you want to create a new project using this package, head over to the [template project](https://github.com/RickardHF/NEXT.js-Static-Page-Localizer-Template) we've created.
+
 ### Install
 
 ```bash
