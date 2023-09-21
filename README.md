@@ -1,6 +1,10 @@
 
 # NEXT.js Static Page Localizer
 
+[![npm version](https://img.shields.io/npm/v/nextjs-static-page-localizer.svg?style=flat-square)](https://www.npmjs.com/package/nextjs-static-page-localizer)
+![npm](https://img.shields.io/npm/dw/nextjs-static-page-localizer)
+[![Package Quality](https://packagequality.com/shield/nextjs-static-page-localizer.svg)](https://packagequality.com/#?package=nextjs-static-page-localizer)
+
 ### Introduction
 
 This is a package for creating localized NEXT.js applications that runs as Static Web Pages. While static web pages are cheap, easy to use and great, they lack some functionality to support some of the more poular localization packages.
