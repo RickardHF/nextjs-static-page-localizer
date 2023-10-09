@@ -20,11 +20,17 @@ jobs:
       shell: bash
       run: npm install --save-dev
 
+    - name: Run tsc
+      shell: bash
+      run: tsc
+
     - name: List Files
       run: |
+        echo "List Files"
         ls
-        cd node_modules
-        ls
+        echo "List Files in node_modules"
+        ls node_modules
+
 
     - name: Compile
       shell: bash
