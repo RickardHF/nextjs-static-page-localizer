@@ -22,7 +22,7 @@ jobs:
     - name: List Files
       run: |
         ls
-        cd node-modules
+        cd node_modules
         ls
 
     - name: Compile
