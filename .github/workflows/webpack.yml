@@ -27,9 +27,9 @@ jobs:
         echo "List Files in node_modules"
         ls node_modules
 
-    - name: Compile
-      shell: bash
-      run: npm run compile
+#    - name: Compile
+ #     shell: bash
+  #    run: npm run compile
 
     - name: Pack
       run: npm pack 
