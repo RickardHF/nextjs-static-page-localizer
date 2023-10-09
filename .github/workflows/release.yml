@@ -1,0 +1,11 @@
+name: Release Package
+
+on:
+    workflow_dispatch:
+
+jobs:
+    Publish-Release:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Latest Build
+              run: echo "Hello World"

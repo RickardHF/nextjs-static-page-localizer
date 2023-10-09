@@ -24,6 +24,7 @@ jobs:
         ls
         cd node_modules
         ls
+        npm install -D typescript@next
 
     - name: Compile
       run: npm run compile
