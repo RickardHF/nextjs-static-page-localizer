@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "test",
-    "compile": "rm -rf dist/ && npx tsc"
+    "compile": "rm -rf dist/ && npx tsc",
+    "reinstall-dev": "rm -rf node_modules/ && npm install -D"
   },
   "keywords": [
     "nextjs",
