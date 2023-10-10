@@ -18,17 +18,7 @@ jobs:
 
     - name: Install
       shell: bash
-      run: |
-        npm cache clean --force
-        rm -rf node_modules
-        npm install
-
-    - name: List Files
-      run: |
-        echo "List Files"
-        ls
-        echo "List Files in node_modules"
-        ls node_modules
+      run: npm install
 
     - name: Compile
       shell: bash
