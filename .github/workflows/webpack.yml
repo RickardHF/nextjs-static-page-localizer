@@ -18,7 +18,10 @@ jobs:
 
     - name: Install
       shell: bash
-      run: npm install
+      run: |
+        npm cache clean --force
+        rm -rf node_modules
+        npm install
 
     - name: List Files
       run: |
