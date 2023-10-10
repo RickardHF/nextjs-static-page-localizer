@@ -28,7 +28,7 @@ jobs:
       run: filename=$(npm pack)
     
     - name: Set Filename
-      run: echo "::set-output name=filename::$filename"
+      run: echo "filename=$filename" >> $GITHUB_OUTPUT
       
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3
