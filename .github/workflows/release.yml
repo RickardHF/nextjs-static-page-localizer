@@ -7,5 +7,10 @@ jobs:
     Publish-Release:
         runs-on: ubuntu-latest
         steps:
-            - name: Get Latest Build
-              run: echo "Hello World"
+            - name: Download Artifact
+              uses: actions/download-artifact@v3
+              with:
+                name: artifact
+            
+            - name: List Files
+              run: ls -R

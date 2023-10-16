@@ -1,0 +1,39 @@
+name: Publish to GitHub Packages
+description: Publishes the package to a package register
+    
+inputs:
+  registry-url:
+    description: The URL of the registry to publish to
+    required: true
+    default: https://npm.pkg.github.com
+  node-auth-token:
+    description: The token to use for authentication
+    required: true
+  
+
+runs:
+  using: "composite"
+  steps:
+  - uses: actions/checkout@v3
+    name: "Check out code"
+
+  - name: Use Node.js
+    uses: actions/setup-node@v3
+    with:
+      node-version: 18.x
+      registry-url: {{ inputs.registry-url }}
+
+  - name: Install
+    shell: bash
+    run: npm install
+
+  - name: Compile
+    shell: bash
+    run: npm run compile
+  
+  - name: Publish
+    shell: bash
+    run: npm publish
+    env:
+      NODE_AUTH_TOKEN: ${{ inputs.node-auth-token }}
+  
