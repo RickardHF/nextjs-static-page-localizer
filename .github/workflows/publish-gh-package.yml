@@ -12,5 +12,5 @@ jobs:
     - uses: ./.github/actions/publish
       with:
         registry-url: https://npm.pkg.github.com
-        access-token: ${{ secrets.GITHUB_TOKEN }}
+        node-auth-token: ${{ secrets.GITHUB_TOKEN }}
     
