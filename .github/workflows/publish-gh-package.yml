@@ -11,6 +11,6 @@ jobs:
     - uses: actions/checkout@v4
     - uses: ./.github/actions/publish
       with:
-        registry-url: https://npm.pkg.github.com
+        registry-url: https://npm.pkg.github.com/
         node-auth-token: ${{ secrets.GITHUB_TOKEN }}
     
