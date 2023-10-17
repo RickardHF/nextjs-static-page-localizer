@@ -9,6 +9,9 @@ inputs:
   node-auth-token:
     description: The token to use for authentication
     required: true
+  package-scope:
+    description: The scope of the package to publish
+    required: false
   
 
 runs:
@@ -22,6 +25,7 @@ runs:
     with:
       node-version: 18.x
       registry-url: ${{ inputs.registry-url }}
+      scope: ${{ inputs.package-scope }}
 
   - name: Install
     shell: bash

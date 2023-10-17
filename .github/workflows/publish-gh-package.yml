@@ -13,4 +13,5 @@ jobs:
       with:
         registry-url: https://npm.pkg.github.com/
         node-auth-token: ${{ secrets.GITHUB_TOKEN }}
+        package-scope: ${{ github.repository_owner }}
     
