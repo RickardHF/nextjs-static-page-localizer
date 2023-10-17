@@ -9,8 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: ./.github/actions/publish
+    - uses: ./.github/actions/build
+      name: Build and Compile
       with:
         registry-url: https://registry.npmjs.org/
-        node-auth-token: ${{ secrets.NPM_REGISTRY_ACCESS_TOKEN }}
+    - run: npm publish
+      name: Publish to NPM
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_REGISTRY_ACCESS_TOKEN }}
     

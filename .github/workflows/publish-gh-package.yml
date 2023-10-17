@@ -9,9 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: ./.github/actions/publish
+    - uses: ./.github/actions/build
+      name: Build and Compile
       with:
         registry-url: https://npm.pkg.github.com/
-        node-auth-token: ${{ secrets.GITHUB_TOKEN }}
-        package-scope: ${{ github.repository_owner }}
+    - run: name=$(npm get name)
+    - run: echo $name
+    - run: npm publish
+      name: Publish to GitHub Packages
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     

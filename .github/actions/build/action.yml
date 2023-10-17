@@ -1,0 +1,28 @@
+name: Build and Initialize Repository
+description: Builds and initializes the repoistory so that it can be used in other processes.
+
+inputs:
+  registry-url:
+    description: The URL of the registry to publish to
+    required: true
+    default: https://registry.npmjs.org/
+
+runs:
+  using: "composite"
+  steps:
+  - uses: actions/checkout@v3
+    name: "Check out code"
+
+  - name: Use Node.js
+    uses: actions/setup-node@v3
+    with:
+      node-version: 18.x
+      registry-url: ${{ inputs.registry-url }}
+
+  - name: Install
+    shell: bash
+    run: npm install
+
+  - name: Compile
+    shell: bash
+    run: npm run compile
