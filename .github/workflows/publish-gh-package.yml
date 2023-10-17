@@ -13,9 +13,7 @@ jobs:
       name: Build and Compile
       with:
         registry-url: https://npm.pkg.github.com/
-    - run: name=$(npm get name)
-    - run: echo $name
-    - run: npm publish
+    - run: npm publish --scope=@${{ github.repository_owner }}
       name: Publish to GitHub Packages
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
