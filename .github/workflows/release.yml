@@ -2,15 +2,25 @@ name: Release Package
 
 on:
     workflow_dispatch:
+      inputs:
+        version:
+          description: 'Version to release'
+          required: true
+          default: 'minor'
+          type: choice
+          options:
+            - 'major'
+            - 'minor'
+            - 'patch'
 
 jobs:
     Publish-Release:
         runs-on: ubuntu-latest
         steps:
-            - name: Download Artifact
-              uses: actions/download-artifact@v3
-              with:
-                name: artifact
-            
-            - name: List Files
-              run: ls -R
+          - uses: actions/checkout@v4
+          - uses: ./.github/actions/build
+            name: Build and Compile
+          - name: Update Version
+            run: |
+              npm version ${{ github.event.inputs.version }}
+              git push --follow-tags
