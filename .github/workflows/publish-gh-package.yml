@@ -15,7 +15,7 @@ jobs:
         registry-url: https://npm.pkg.github.com/
     - run: |
         name=$(npm pkg get name | sed -e 's/^"//' -e 's/"$//')
-        newname="@${{ github.repository_owner }}/$name"
+        newname="@$(echo ${{ github.repository_owner }} | awk '{print tolower($0)}')/$name"
         npm pkg set name=$newname
       name: Set New Package Name
     - run: npm publish
