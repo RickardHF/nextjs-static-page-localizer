@@ -15,10 +15,10 @@ jobs:
         registry-url: https://npm.pkg.github.com/
     - run: name=$(npm pkg get name | sed -e 's/^"//' -e 's/"$//')
       name: Get Package Name
-    - run: newname="@${{ github.repository_owner }}/$($name)"
-      name: Set New Package Name
-    - run: echo $newname
-      name: Echo New Package Name
+    - run: newname="@${{ github.repository_owner }}/$name"
+      name: Create New Package Name
+    - run: npm pkg set name=$newname
+      name: Set new name
     - run: npm publish
       name: Publish to GitHub Packages
       env:
