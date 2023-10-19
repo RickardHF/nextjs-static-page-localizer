@@ -1,0 +1,37 @@
+name: Increase Package Number
+
+on:
+    workflow_dispatch:
+      inputs:
+        version:
+          description: 'Version to release'
+          required: true
+          default: 'patch'
+          type: choice
+          options:
+            - 'major'
+            - 'minor'
+            - 'patch'
+        email: 
+          description: 'Email to use for git'
+          required: true
+          default: 'rickardhole.falck@gmail.com'
+        username:
+          description: 'Username to use for git'
+          required: true
+          default: 'RickardHF'
+
+jobs:
+    Increment:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+          - uses: ./.github/actions/build
+            name: Build and Compile
+          - run: |
+              git config --global user.email "${{ github.event.inputs.email }}"
+              git config --global user.name "${{ github.event.inputs.username }}"
+          - name: Update Version
+            run: |
+              npm version ${{ github.event.inputs.version }}
+              git push --follow-tags
