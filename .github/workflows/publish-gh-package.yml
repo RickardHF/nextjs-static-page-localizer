@@ -13,12 +13,11 @@ jobs:
       name: Build and Compile
       with:
         registry-url: https://npm.pkg.github.com/
-    - run: name=$(npm pkg get name | sed -e 's/^"//' -e 's/"$//')
-      name: Get Package Name
-    - run: newname="@${{ github.repository_owner }}/$name"
-      name: Create New Package Name
-    - run: npm pkg set name=$newname
-      name: Set new name
+    - run: |
+        name=$(npm pkg get name | sed -e 's/^"//' -e 's/"$//')
+        newname="@${{ github.repository_owner }}/$name"
+        npm pkg set name=$newname
+      name: Set New Package Name
     - run: npm publish
       name: Publish to GitHub Packages
       env:
