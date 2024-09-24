@@ -12,6 +12,7 @@
 - Customizable UI-components
 - Flexibility
 - Head Title and Description Localization
+- Random point
 
 ### Introduction
 
